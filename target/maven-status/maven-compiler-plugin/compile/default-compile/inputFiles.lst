@@ -1,6 +1,2 @@
-/Users/kamil/Desktop/automatedTesting/maven/apache-maven-3.6.3/RusselBromley3/src/main/java/Resources/base.java
-/Users/kamil/Desktop/automatedTesting/maven/apache-maven-3.6.3/RusselBromley3/src/main/java/pageObjects/CartPage.java
-/Users/kamil/Desktop/automatedTesting/maven/apache-maven-3.6.3/RusselBromley3/src/main/java/pageObjects/SneakersPage.java
-/Users/kamil/Desktop/automatedTesting/maven/apache-maven-3.6.3/RusselBromley3/src/main/java/pageObjects/LandingPage.java
-/Users/kamil/Desktop/automatedTesting/maven/apache-maven-3.6.3/RusselBromley3/src/main/java/pageObjects/ProductPage.java
-/Users/kamil/Desktop/automatedTesting/maven/apache-maven-3.6.3/RusselBromley3/src/main/java/pageObjects/LoginPage.java
+/Users/kamil/eclipse-workspace/IMendGadgets2/src/main/java/pageObjects/CartPage.java
+/Users/kamil/eclipse-workspace/IMendGadgets2/src/main/java/Resources/base.java

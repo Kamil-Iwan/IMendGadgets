@@ -19,7 +19,7 @@ public class base {
 	public WebDriver initializeDriver() throws IOException {
 		
 		prop = new Properties();
-		FileInputStream fis = new FileInputStream("//Users//kamil//Desktop//automatedTesting//maven//apache-maven-3.6.3//RusselBromley3//src//main//java/Resources//data.properties");
+		FileInputStream fis = new FileInputStream("//Users//kamil//eclipse-workspace//IMendGadgets2//src//main//java//Resources//data.properties");
 		
 		prop.load(fis);
 		String browserName = prop.getProperty("browser");

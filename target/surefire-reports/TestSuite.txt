@@ -1,15 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 26.959 s <<< FAILURE! - in TestSuite
-SeleniumAcademy.addItemToBasketTest.basePageNavigation  Time elapsed: 12.617 s  <<< FAILURE!
-org.openqa.selenium.ElementClickInterceptedException: 
-element click intercepted: Element <div class="product-image">...</div> is not clickable at point (729, 863). Other element would receive the click: <p>...</p>
-  (Session info: chrome=81.0.4044.138)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'Kamils-Mac-mini', ip: '2a02:c7f:363d:3200:49b5:1348:a3a:a4de%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.6', java.version: '13.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.138, chrome: {chromedriverVersion: 81.0.4044.69 (6813546031a4b..., userDataDir: /var/folders/mq/r6jgtywj4m1...}, goog:chromeOptions: {debuggerAddress: localhost:55783}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 9b5104122facd6ac0e512fdf68ff3fbf
-	at SeleniumAcademy.addItemToBasketTest.basePageNavigation(addItemToBasketTest.java:53)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.867 s - in TestSuite

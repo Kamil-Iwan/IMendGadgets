@@ -11,64 +11,68 @@ public class ProductPage {
 	
 	public WebDriver driver;
 	
-	By selectSize = By.cssSelector(".occ-chevron");
-	By uk3 = By.xpath("//a[contains(text(), 'EU 36')]");
-	By addToBag = By.cssSelector("#addToCartButton");
-	By cart = By.cssSelector("a[href='/cart']");
-	By productName = By.cssSelector("#CC-prodDetails-displayName");
-	By selectedSize = By.cssSelector(".occ-selected-value");
-	By dropdown = By.cssSelector(".dropdown");
-	By price = By.cssSelector(".product-price");
+	By photo= By.cssSelector(".mission-img");
+	By phone = By.xpath("//div[@class='mission']//h1");
+	By allRepairs= By.className("wpcf7-list-item");
+	By bookRepair= By.xpath("//input[@value='Book Repair Now']");
 	
 	
 	
-			
+	
+	
 	
 public ProductPage(WebDriver driver) {
 	this.driver = driver; 
 	
 }
 	
-public WebElement getSizes() {
 	
-	return driver.findElement(selectSize); 
+	public WebElement getPhoto() {
+		
+		return (WebElement) driver.findElement(photo);
+	}
+	
+public WebElement getPhone() {
+		
+		return (WebElement) driver.findElement(phone);
+	}
+public List<WebElement> getAllRepairs() {
+	
+	return driver.findElements(allRepairs);
 }
 
-public WebElement getUK3() {
 	
-	return driver.findElement(uk3); 
+public WebElement getBookRepair() {
+	
+	return (WebElement) driver.findElement(bookRepair);
 }
 
-public WebElement getAddToBag() {
 	
-	return driver.findElement(addToBag); 
-}
+	
 
-public WebElement getViewCart() {
-	
-	return driver.findElement(cart); 
-}
-
-public WebElement getProductName() {
-	
-	return driver.findElement(productName); 
-}
-
-public WebElement getSelectedSize() {
-	
-	return driver.findElement(selectedSize); 
-}
-
-public List<WebElement> getDropdown() {
-	
-	return driver.findElements(dropdown);
-}
-
-public WebElement getPrice() {
-	
-	return driver.findElement(price); 
-}
 	
 	
 
 }
+
+/*
+package pageObjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class LandingPage {
+	
+	
+	public WebDriver driver;
+	
+	By signin = By.xpath("//ul[contains(@class,'ib-link')]//a[text() = 'Sign In']");
+	By welcome = By.cssSelector(".ib-welcome");
+	By women = By.xpath("//a[contains(@class,'mm-link') and contains(text(),'Women')]");
+	By sneakers = By.xpath("//a[contains(@class, 'sub-category-link') and contains(text(), 'Sneakers')]");
+	
+	
+	
+			
+	*/
