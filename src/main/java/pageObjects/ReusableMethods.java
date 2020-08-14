@@ -2,37 +2,28 @@ package pageObjects;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class PhoneRepairs {
-	
+
+
+public class ReusableMethods {
 	
 	public WebDriver driver;
 	
-	By apple= By.xpath("//h4[contains(text(),'Apple')]");
-	
-	
-	
+
 	ProductPage pp = new ProductPage(driver);
 	
-public PhoneRepairs(WebDriver driver) {
-	this.driver = driver; 
 	
-}
-	
-	
-	public WebElement getApple() {
+	public void getRepairsMethod () {
+		driver = initializeDriver(); 
 		
-		return driver.findElement(apple); 
-	}
-	
-
-
-	
-public void getRepairsMethod() {
-	
+		System.out.println("Test klasy kierwa.");
+		
+		
 	//save number of repairs to a variable
 		int repairsSize = pp.getAllRepairs().size();
 				
@@ -46,13 +37,24 @@ public void getRepairsMethod() {
 		int randomRepair = ThreadLocalRandom.current().nextInt(1, repairsSize);
 		System.out.println("Clicking on repair number: " + randomRepair);
 		pp.getAllRepairs().get(randomRepair).click();
+		
+		
 }
+
+
+	}
+
+
+	private WebDriver initializeDriver() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 	
 
 }
-}
+
 
 /*
 package pageObjects;

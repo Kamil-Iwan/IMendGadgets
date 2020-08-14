@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
@@ -36,6 +37,7 @@ public class calendar extends base{
 	@Test
 	public void basePageNavigation() throws IOException, InterruptedException {
 		
+		
 		//initialise driver
 		driver = initializeDriver(); 
 		driver.get(prop.getProperty("url"));
@@ -49,7 +51,7 @@ public class calendar extends base{
 		ProductPage pp = new ProductPage(driver);
 		CalendarPage c = new CalendarPage(driver);
 		
-		
+	
 		//close popup
 		p.getExitPopup().click();
 		
@@ -108,6 +110,45 @@ public class calendar extends base{
 		c.getCalendar().click();
 		
 		
+		/*
+		// get today's date
+		
+		
+		int whatMonth = cal.get(Calendar.MONTH);
+		int whatDay = cal.get(Calendar.DAY_OF_MONTH);
+		*/
+		
+		//how many days displayed
+		//int countDays =	c.getAllDays().siz
+			
+		//get current year
+		Calendar cal = Calendar.getInstance();
+		int currentYear = cal.get(Calendar.YEAR);
+			
+		//wait for calendar to appear
+			
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".xdsoft_year")));
+		 
+		//click on year
+		c.getYear().click();
+		
+		//how many years displayed
+		
+		List<WebElement> allYears2 = driver.findElements(By.cssSelector(".xdsoft_yearselect"));
+		int numOfYears = allYears2.size();
+		
+		System.out.println("Number of years displayed: " + numOfYears);
+		
+		
+	
+		
+	
+		
+		
+				
+		
+		
 		
 		
 		
@@ -143,4 +184,3 @@ public class calendar extends base{
 
 
 	
-
