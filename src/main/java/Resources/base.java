@@ -30,6 +30,7 @@ public class base {
 		{
 			System.setProperty("webdriver.chrome.driver", "//Users//kamil//Desktop//automatedTesting//chromedriver");
 			driver = new ChromeDriver(); 
+			driver.manage().deleteAllCookies();
 			
 			ChromeOptions options = new ChromeOptions();
 			//options.addArguments("headless");

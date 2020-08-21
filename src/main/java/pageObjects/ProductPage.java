@@ -17,6 +17,8 @@ public class ProductPage {
 	By bookRepair= By.xpath("//input[@type='submit']");
 	By ipadAllRepairs = By.xpath("//span[@class='wpcf7-form-control wpcf7-checkbox iPad6-selection-boxes']/span");
 	By ipadBookRepair = By.xpath("//*[@id=\"wpcf7-f1412-p396-o1\"]/form/div[4]/div/div/p[3]");
+	By inputText = By.xpath("//input[@type='text']");
+	
 	
 	
 	
@@ -57,6 +59,13 @@ public List<WebElement> getAllIpadRepairs() {
 public WebElement getIpadBookRepair() {
 	
 	return (WebElement) driver.findElement(ipadBookRepair);
+
+		
+}
+
+public WebElement getInputText() {
+	
+	return (WebElement) driver.findElement(inputText);
 
 		
 }
