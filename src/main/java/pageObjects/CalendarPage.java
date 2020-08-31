@@ -13,14 +13,22 @@ public class CalendarPage {
 	
 	By inStore= By.xpath("//input[@value='Repair In Store']");
 	By calendar = By.cssSelector("#booking-date");
-	By year = By.xpath("//div[5]//div[2]//span[1]"); 
+	By year = By.cssSelector(".xdsoft_year"); 
+	By month = By.cssSelector(".xdsoft_month");
 	By allYears = By.cssSelector(".xdsoft_yearselect");
 	By allMonths = By.cssSelector(".xdsoft_monthselect");
 	By allDays = By.xpath("//td/data-date/");
+	By calendarText = By.cssSelector(".wpcf7-form-control-wrap .booking-date");
 
 	
 	Calendar cal = Calendar.getInstance();
 	int currentYear = cal.get(Calendar.YEAR);
+	
+	public int targetYear = 2020;
+	public String targetMonth1 = "October";
+	public int targetDay = 25; 
+	public String targetTime = "16:30";
+	public String targetDateString = "30/08/2020 16:30";
 	
 	
 public CalendarPage(WebDriver driver) {
@@ -65,13 +73,22 @@ public WebElement getAllDays() {
 	
 	return (WebElement) driver.findElements(allDays); 
 }
+
+public WebElement getMonth() {
+	
+	return driver.findElement(month); 
+}
+
+public WebElement getCalendarText() {
+	
+	return driver.findElement(calendarText); 
+}
+
+	
 	
 
 
-public int targetYear = 2020;
-public String targetMonth1 = "September";
-public int targetDay = 25; 
-public String targetTime = "16:30"; 
+ 
 	
 
 	
@@ -79,24 +96,3 @@ public String targetTime = "16:30";
 
 }
 
-/*
-package pageObjects;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-public class LandingPage {
-	
-	
-	public WebDriver driver;
-	
-	By signin = By.xpath("//ul[contains(@class,'ib-link')]//a[text() = 'Sign In']");
-	By welcome = By.cssSelector(".ib-welcome");
-	By women = By.xpath("//a[contains(@class,'mm-link') and contains(text(),'Women')]");
-	By sneakers = By.xpath("//a[contains(@class, 'sub-category-link') and contains(text(), 'Sneakers')]");
-	
-	
-	
-			
-	*/

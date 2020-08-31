@@ -1,70 +1,36 @@
 package mainTests;
 
 import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import java.io.IOException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.By.ByXPath;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.AssertJUnit;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.Test;
-
 import Resources.base;
-import pageObjects.BookingStep3;
-import pageObjects.CalendarPage;
-import pageObjects.ContactDetailsPage;
-import pageObjects.DeliveryPage;
-import pageObjects.LandingPage;
 import pageObjects.Laptops;
-import pageObjects.PhoneRepairs;
-import pageObjects.PopUp;
 import pageObjects.ProductPage;
 import pageObjects.ReusableMethods;
-import pageObjects.ServicePage;
-import pageObjects.iPhones;
+import pageObjects.iPads;
 
 
 public class iPadBooking extends base{
 	
 	
 	
-	
 	@Test
-	public void checkPhoneBookingPage() throws IOException, InterruptedException {
+	public void checkiPadBookingPage() throws IOException, InterruptedException {
 		
 		//initialise driver
 		driver = initializeDriver(); 
-		//driver.get(prop.getProperty("url"));
-		
+			
 		//initialise Page Objects
-		LandingPage l = new LandingPage(driver);
-		PopUp p = new PopUp(driver);
-		ServicePage sp = new ServicePage(driver);
-		PhoneRepairs pr = new PhoneRepairs(driver);
-		iPhones ip = new iPhones(driver);
 		ProductPage pp = new ProductPage(driver);
-		CalendarPage c = new CalendarPage(driver);
-		Laptops lt = new Laptops(driver);
-		DeliveryPage dp = new DeliveryPage(driver);
-		ContactDetailsPage cdp = new ContactDetailsPage(driver);
-		BookingStep3 bs3 = new BookingStep3(driver);
-		
+		iPads ipd = new iPads(driver); 
 		ReusableMethods m = new ReusableMethods(driver);
+		Laptops lt = new Laptops(driver);
 		
 		
-		
-				
-				
-				/*
 				//iPad - check if service page opens up
 				System.out.println("////////////////IPAD TEST COMMENCING./////////////////");
 				driver.get(prop.getProperty("ipad"));
@@ -77,6 +43,9 @@ public class iPadBooking extends base{
 					driver.findElement(By.xpath("//span[@class='wpcf7-form-control wpcf7-radio ipad-selection-boxes']/span[" + x + "]")).click();
 								
 					String ipadName = 	driver.findElement(By.xpath("//span[@class='wpcf7-form-control wpcf7-radio ipad-selection-boxes']/span[" + x + "]/label/span")).getText();
+					String ipadNameNoSpace = ipadName.replaceAll("\\s", "");
+					//test
+					//System.out.println(ipadNameNoSpace); 
 					
 					//save number of repairs to a variable
 					int repairsSize = pp.getAllIpadRepairs().size();
@@ -84,21 +53,41 @@ public class iPadBooking extends base{
 				
 					//random number of repairs to be generated
 					int randomNumber = ThreadLocalRandom.current().nextInt(0, repairsSize);
-					//System.out.println("The random number of repairs to be selected:" + randomNumber);
-					
-						
+										
 					//select a random number of random repairs
-						for (int r = 1; r <=randomNumber; r++) {
+					for (int r = 1; r <=randomNumber; r++) {
 						int randomRepair = ThreadLocalRandom.current().nextInt(1, repairsSize);
-						//System.out.println("Clicking on repair number: " + randomRepair);
-						pp.getAllIpadRepairs().get(randomRepair).click();
+						
+						
+						if (x == 1) {
+							
+							pp.getAllIpadRepairs().get(randomRepair).click();
 						}
+						
+						else {
+						
+						driver.findElements(By.cssSelector("." + ipadNameNoSpace + " .wpcf7-list-item")).get(randomRepair).click();
+								
 					
+						}}
+					
+						
 						//click Book Repair Now
-						pp.getIpadBookRepair().click();
+						WebElement bookRepairDynamic = driver.findElement(By.cssSelector("div[data-id='" + ipadNameNoSpace + "'] .btn"));
+								
+						JavascriptExecutor executor = (JavascriptExecutor)driver;
+						executor.executeScript("arguments[0].click();", bookRepairDynamic);
 						
 						
-						Boolean isPresent = driver.findElements(By.cssSelector("#booking-date")).size() > 0;
+						//click on Post Your Device
+						ipd.getPostYourDevice().click();
+						
+						//click Proceed With Booking
+						executor.executeScript("arguments[0].click();", ipd.getProceedWithBooking());
+							
+						//test if Submit Button is present
+						Boolean isPresent = driver.findElements(By.cssSelector("input[name='your-name']")).size() > 0;
+								
 						
 						if (isPresent) {
 							
@@ -110,157 +99,224 @@ public class iPadBooking extends base{
 							
 							System.out.println(ipadName + " service page error!!!!!");
 							
-						}
+						}}
 				
-				*/
+				
+				//iPadMini - check if service page opens up
+				System.out.println("////////////////IPAD MINI TEST COMMENCING./////////////////");
+				driver.get(prop.getProperty("ipadmini"));
+				
+				List<WebElement> ipmButtons = driver.findElements(By.cssSelector("#ipad-mini-selection-boxes>span"));
+				int iPadMiniButtons = ipmButtons.size();
+				System.out.println("Number of iPads Mini: " + iPadMiniButtons);
+				
+				//iterate through all iPads in the category and follow the booking process
+				for (int z=1; z<=iPadMiniButtons; z++) {
+					driver.get(prop.getProperty("ipadmini"));
+					driver.findElement(By.xpath("//span[@class='wpcf7-form-control wpcf7-radio ipad-mini-selection-boxes']/span[" + z + "]")).click();
+								
+					String ipadMiniName = driver.findElement(By.xpath("//span[@class='wpcf7-form-control wpcf7-radio ipad-mini-selection-boxes']/span[" + z + "]/label/span")).getText();
+					String ipadMiniNameNoSpace = ipadMiniName.replaceAll("\\s", "");	
+					String ipadMiniNameCorrectFormat = "iPadmini"+ipadMiniNameNoSpace.charAt(8);
 	
-				/*
-				System.out.println("////////////////LAPTOPS TEST COMMENCING./////////////////");
-				//Apple laptop test
-				driver.get(prop.getProperty("laptops"));
-				lt.getApple().click();
-				lt.getAppleType().sendKeys("test");
-				lt.getBookRepair().click();
-				
-				
-				Boolean isApplePresent = driver.findElements(By.cssSelector("#booking-date")).size() > 0;
-				
-				if (isApplePresent) {
 					
-					System.out.println("Apple laptop - OK");	
+					//save number of repairs to a variable
+					List<WebElement> iPadMiniAllRepairs = driver.findElements(By.cssSelector("#" + ipadMiniNameCorrectFormat + "-selection-boxes .wpcf7-list-item"));
+					int repairsSize = iPadMiniAllRepairs.size();
 					
-				}
-				
-				else {
+					//random number of repairs to be generated
+					int randomNumberMini = ThreadLocalRandom.current().nextInt(0, repairsSize);
 					
-					System.out.println("Apple laptop-  service page error!!!!!");
+					//select a random number of random repairs
+					for (int y = 1; y <=randomNumberMini; y++) {
+						int randomRepairMini = ThreadLocalRandom.current().nextInt(1, repairsSize);
+						
+						
+						driver.findElements(By.cssSelector("." + ipadMiniNameCorrectFormat + " .wpcf7-list-item")).get(randomRepairMini).click();
+						}
+						
+						//run a correct script depending whether the xpath link is written as 'iPadMini' or 'iPadmini'
+						List <WebElement> bookRepairCapitalM = driver.findElements(By.cssSelector("div[data-id='" + ipadMiniNameNoSpace + "'] .btn"));
+											
+						if (bookRepairCapitalM.size() > 0) {
+							
+						WebElement bookRepairDynamic = driver.findElement(By.cssSelector("div[data-id='" + ipadMiniNameNoSpace + "'] .btn"));
+							
+							JavascriptExecutor executor = (JavascriptExecutor)driver;
+							executor.executeScript("arguments[0].click();", bookRepairDynamic);
+							
+						}
+						
+						else {
+							
+							WebElement bookRepairDynamic = driver.findElement(By.cssSelector("div[data-id='" + ipadMiniNameCorrectFormat + "'] .btn"));
+							
+							JavascriptExecutor executor = (JavascriptExecutor)driver;
+							executor.executeScript("arguments[0].click();", bookRepairDynamic);
+							
+						}
+						
+						//click on Post Your Device
+						ipd.getPostYourDevice().click();
+						
+						//enter Device Unlocking Code
+						lt.getEnterDeviceCode().sendKeys("test unlocking code");
+						
+						//click Proceed With Booking
+						JavascriptExecutor executor = (JavascriptExecutor)driver;
+						executor.executeScript("arguments[0].click();", lt.getProceedWithBooking());
+
+						//test if Submit Button is present
+						Boolean isSubmitButtonPresent = lt.getSubmitBooking().size() > 0;
+							
+						
+						if (isSubmitButtonPresent) {
+							
+							System.out.println(ipadMiniName + " OK");
+						}
+						
+						else {
+							
+							System.out.println(ipadMiniName + " ERROR!!!!");
+							
+						}}	
+				
+				
+				
+				//iPadAir - check if service page opens up
+				System.out.println("////////////////IPAD AIR TEST COMMENCING./////////////////");
+				driver.get(prop.getProperty("ipadair"));
+				
+				List<WebElement> ipaButtons = driver.findElements(By.cssSelector("#ipadair-selection-boxes>span"));
+				int iPadAirButtons = ipaButtons.size();
+				System.out.println("Number of iPads Air: " + iPadAirButtons);
+				
+				//iterate through all iPads in the category and follow the booking process
+				for (int a=1; a<=iPadAirButtons; a++) {
+					driver.get(prop.getProperty("ipadair"));
+					driver.findElement(By.xpath("//span[@class='wpcf7-form-control wpcf7-radio ipadair-selection-boxes']/span[" + a + "]")).click();
+								
+					String ipadAirName = driver.findElement(By.xpath("//span[@class='wpcf7-form-control wpcf7-radio ipadair-selection-boxes']/span[" + a + "]/label/span")).getText();
+					String ipadAirNameNoSpace = ipadAirName.replaceAll("\\s", "");	
+							
+					//save number of repairs to a variable
+					List<WebElement> iPadMiniAllRepairs = driver.findElements(By.cssSelector("#" + ipadAirNameNoSpace + "-selection-boxes .wpcf7-list-item"));
+					int repairsSize = iPadMiniAllRepairs.size();
 					
-				}
-				
-				
-				//Dell laptop test
-				driver.get(prop.getProperty("laptops"));
-				lt.getDell().click();
-				lt.getDellType().sendKeys("test");
-				lt.getBookRepair().click();
-				
-				
-				Boolean isDellPresent = driver.findElements(By.cssSelector("#booking-date")).size() > 0;
-				
-				if (isDellPresent) {
+					//random number of repairs to be generated
+					int randomNumberMini = ThreadLocalRandom.current().nextInt(0, repairsSize);
 					
-					System.out.println("Dell laptop - OK");	
+					//select a random number of random repairs
+					for (int y = 1; y <=randomNumberMini; y++) {
+						int randomRepairMini = ThreadLocalRandom.current().nextInt(1, repairsSize);
+						
+						
+						driver.findElements(By.cssSelector("." + ipadAirNameNoSpace + " .wpcf7-list-item")).get(randomRepairMini).click();
+						}
+											
+						//click on Book Repair					
+						WebElement bookRepairDynamic = driver.findElement(By.cssSelector("div[data-id='" + ipadAirNameNoSpace + "'] .btn"));
+							
+						JavascriptExecutor executor = (JavascriptExecutor)driver;
+						executor.executeScript("arguments[0].click();", bookRepairDynamic);
+							
+						//click on Post Your Device
+						ipd.getPostYourDevice().click();
+						
+						//enter Device Unlocking Code
+						lt.getEnterDeviceCode().sendKeys("test unlocking code");
+						
+						//click Proceed With Booking
+						executor.executeScript("arguments[0].click();", lt.getProceedWithBooking());
+						//lt.getProceedWithBooking().click();
+						
+						//test if Submit Button is present
+						Boolean isSubmitButtonPresent = lt.getSubmitBooking().size() > 0;
+							
+						
+						if (isSubmitButtonPresent) {
+							
+							System.out.println(ipadAirName + " OK");
+						}
+						
+						else {
+							
+							System.out.println(ipadAirName + " ERROR!!!!");
+							
+						}}	
+				
+				
+				
+				//iPadPro - check if service page opens up
+				System.out.println("////////////////IPAD PRO TEST COMMENCING./////////////////");
+				driver.get(prop.getProperty("ipadpro"));
+				
+				List<WebElement> ippButtons = driver.findElements(By.cssSelector("#ipadpro-selection-boxes>span"));
+				int iPadProButtons = ippButtons.size();
+				System.out.println("Number of iPads Pro: " + iPadProButtons);
+				
+				
+				for (int p=1; p<=iPadProButtons; p++) {
+					driver.get(prop.getProperty("ipadpro"));
+					driver.findElement(By.xpath("//span[@class='wpcf7-form-control wpcf7-radio ipadpro-selection-boxes']/span[" + p + "]")).click();
+								
+					String ipadProName = driver.findElement(By.xpath("//span[@class='wpcf7-form-control wpcf7-radio ipadpro-selection-boxes']/span[" + p + "]/label/span")).getText();
+					String ipadProNameNoSpace = ipadProName.replaceAll("\\s", "").replace(".", "").replace("gen", "");
+										
+					//save number of repairs to a variable
+					List<WebElement> iPadMiniAllRepairs = driver.findElements(By.cssSelector("#" + ipadProNameNoSpace + "-selection-boxes .wpcf7-list-item"));
+					int repairsSize = iPadMiniAllRepairs.size();
 					
-				}
-				
-				else {
+					//random number of repairs to be generated
+					int randomNumberMini = ThreadLocalRandom.current().nextInt(0, repairsSize);
 					
-					System.out.println("Dell laptop -  service page error!!!!!");
 					
-				}
-				
-				//Lenovo laptop test
-				driver.get(prop.getProperty("laptops"));
-				lt.getLenovo().click();
-				lt.getLenovoType().sendKeys("test");
-				lt.getBookRepair().click();
-				
-				
-				Boolean isLenovoPresent = driver.findElements(By.cssSelector("#booking-date")).size() > 0;
-				
-				if (isLenovoPresent) {
+					//select a random number of random repairs
+					for (int y = 1; y <=randomNumberMini; y++) {
+						int randomRepairPro = ThreadLocalRandom.current().nextInt(1, repairsSize);
 					
-					System.out.println("Lenovo laptop - OK");	
+						driver.findElements(By.cssSelector("." + ipadProNameNoSpace + " .wpcf7-list-item")).get(randomRepairPro).click();
+						}
+						
+						
+						//click on Book Repair					
+						WebElement bookRepairDynamic = driver.findElement(By.cssSelector("div[data-id='" + ipadProNameNoSpace + "'] .btn"));
+							
+						JavascriptExecutor executor = (JavascriptExecutor)driver;
+						executor.executeScript("arguments[0].click();", bookRepairDynamic);
+						
+						//click on Post Your Device
+						ipd.getPostYourDevice().click();
+						
+						//enter Device Unlocking Code
+						lt.getEnterDeviceCode().sendKeys("test unlocking code");
+						
+						//click Proceed With Booking
+						executor.executeScript("arguments[0].click();", ipd.getProceedWithBooking2());
+						
+						//test if Submit Button is present
+						Boolean isSubmitButtonPresent = lt.getSubmitBooking().size() > 0;
+							
+						
+						if (isSubmitButtonPresent) {
+							
+							System.out.println(ipadProName + " OK");
+						}
+						
+						else {
+							
+							System.out.println(ipadProName + " ERROR!!!!");
+							
+				}}	
+				
+				
 					
-				}
-				
-				else {
-					
-					System.out.println("Lenovo laptop -  service page error!!!!!");
-					
-				}
-				
-				
-				//ASUS laptop test
-				driver.get(prop.getProperty("laptops"));
-				lt.getAsus().click();
-				lt.getAsusType().sendKeys("test");
-				lt.getBookRepair().click();
-				
-				
-				Boolean isASUSPresent = driver.findElements(By.cssSelector("#booking-date")).size() > 0;
-				
-				if (isASUSPresent) {
-					
-					System.out.println("ASUS laptop - OK");	
-					
-				}
-				
-				else {
-					
-					System.out.println("ASUS laptop -  service page error!!!!!");
-					
-				}
-				
-				//HP laptop test
-				driver.get(prop.getProperty("laptops"));
-				lt.getHP().click();
-				lt.getHPType().sendKeys("test");
-				lt.getBookRepair().click();
-				
-				
-				Boolean isHPPresent = driver.findElements(By.cssSelector("#booking-date")).size() > 0;
-				
-				if (isHPPresent) {
-					
-					System.out.println("HP laptop - OK");	
-					
-				}
-				
-				else {
-					
-					System.out.println("HP laptop -  service page error!!!!!");
-					
-				}
-				
-				//Other laptop test
-				driver.get(prop.getProperty("laptops"));
-				lt.getOther().click();
-				lt.getOtherType().sendKeys("test");
-				lt.getBookRepair().click();
-				
-				
-				Boolean isOtherLaptopPresent = driver.findElements(By.cssSelector("#booking-date")).size() > 0;
-				
-				if (isOtherLaptopPresent) {
-					
-					System.out.println("HP laptop - OK");	
-					
-				}
-				
-				else {
-					
-					System.out.println("HP laptop -  service page error!!!!!");
-					
-				}
-				
-				
-				
-		*/
-				
-			
-				
-				
-				
-				
 				
 				driver.quit();
-
-	}
 				
-				
-	}
-
+			
+	
+	}}
 		
 		
 		
@@ -274,4 +330,3 @@ public class iPadBooking extends base{
 
 
 	
-

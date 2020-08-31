@@ -33,12 +33,14 @@ public class base {
 			driver.manage().deleteAllCookies();
 			
 			ChromeOptions options = new ChromeOptions();
-			//options.addArguments("headless");
+			//options.addArguments("--headless");
+			options.addArguments("--start-fullscreen");
+			
 		 driver=new ChromeDriver(options); 
 		}	
 		
 		
-		driver.manage().timeouts().implicitlyWait(5,  TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(8,  TimeUnit.SECONDS);
 		return driver; 
 		
 		

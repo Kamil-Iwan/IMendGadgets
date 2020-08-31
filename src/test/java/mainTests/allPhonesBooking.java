@@ -83,7 +83,7 @@ public class allPhonesBooking extends base{
 		System.out.println("Number of iPhones: " + iphoneButtons);
 		
 		
-		//iPhone page - check if service page opens up
+		//iPhone page - check if service page opens up for each phone
 		for (int i=1; i<=iphoneButtons; i++) {
 			driver.get(prop.getProperty("iphone"));
 			driver.findElement(By.xpath("//a[" + i + "]//button[1]")).click();

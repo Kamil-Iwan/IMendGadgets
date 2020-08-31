@@ -1,5 +1,7 @@
 package pageObjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,11 +20,17 @@ public class Laptops {
 	By appleType = By.cssSelector("div[data-id='apple'] .pd-form-label");
 	By dellType = By.cssSelector("div[data-id='dell'] .pd-form-label");
 	By lenovoType = By.cssSelector("div[data-id='lenovo'] .pd-form-label");
-	By asusType = By.cssSelector("div[data-id='asus'] .pd-form-label");
+	By asusType = By.cssSelector("div[data-id='asus'] .pd-form-label .wpcf7-text");
 	By HPType = By.cssSelector("div[data-id='hp'] .pd-form-label");
 	By otherType = By.cssSelector("div[data-id='other'] .pd-form-label");
 	By bookRepair = By.cssSelector("input[value='Book Repair']");
 	By proceedWithBooking = By.xpath("//input[@value='Proceed With Booking']");
+	By submitBooking = By.xpath("//input[@value='Submit Booking']");
+	
+	By laptops = By.xpath("//img[@src='https://imendgadgets.com/wp-content/themes/imendgadgets-theme/assets/images/laptop-fix-i-mend-gadgets.jpg']");
+	
+	By postYourDevice = By.xpath("//input[@value='Post Your Device']");
+	By enterDeviceCode = By.cssSelector("#device-code");
 	
 	
 	
@@ -107,6 +115,26 @@ public WebElement getProceedWithBooking() {
 	return driver.findElement(proceedWithBooking); 
 }
 
+public WebElement getLaptops() {
+	
+	return driver.findElement(laptops); 
+}
+
+public WebElement getPostYourDevice() {
+	
+	return driver.findElement(postYourDevice); 
+}
+
+public WebElement getEnterDeviceCode() {
+	
+	return driver.findElement(enterDeviceCode); 
+}
+
+public List<WebElement> getSubmitBooking() {
+	
+	return driver.findElements(submitBooking);
+}
+
 	
 	
 
@@ -114,4 +142,3 @@ public WebElement getProceedWithBooking() {
 	
 
 }
-

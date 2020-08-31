@@ -21,32 +21,24 @@ public class ReusableMethods extends base{
 		
 	}
 
-
-
-
 	public void getRandomRepairsMethod() {
 		ProductPage pp = new ProductPage(driver);
 				
 		//get the size of all available repairs
 		int repairsSize = pp.getAllRepairs().size();
 		
-		//System.out.println(repairsSize); 
-		
 		//random number of repairs to be generated
 		int randomNumber = ThreadLocalRandom.current().nextInt(0, repairsSize);
-		//System.out.println("The random number of repairs to be selected:" + randomNumber);
-					
-						
+		//System.out.println("Number of repairs to be selected: "+randomNumber);
+		
+								
 		//select a random number of random repairs
 		for (int r = 1; r <=randomNumber; r++) {
-		int randomRepair = ThreadLocalRandom.current().nextInt(1, repairsSize);
-		//System.out.println("Clicking on repair number: " + randomRepair);
-		pp.getAllRepairs().get(randomRepair).click();
+			int randomRepair = ThreadLocalRandom.current().nextInt(0, repairsSize);
+			pp.getAllRepairs().get(randomRepair).click();
 				
-		
-	}
-
-	
+			//System.out.println("Clicking repair number: "+randomRepair);		
+	}	
 	
 
 }

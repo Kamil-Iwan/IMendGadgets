@@ -12,7 +12,9 @@ public class PhoneRepairs {
 	public WebDriver driver;
 	
 	By apple= By.xpath("//h4[contains(text(),'Apple')]");
-	
+	By samsung = By.xpath("//h4[contains(text(),'Samsung')]");
+	By huawei = By.xpath("//h4[contains(text(),'Huawei')]");
+	By google = By.xpath("//h4[contains(text(),'Google')]");
 	
 	
 	ProductPage pp = new ProductPage(driver);
@@ -27,6 +29,21 @@ public PhoneRepairs(WebDriver driver) {
 		
 		return driver.findElement(apple); 
 	}
+	
+public WebElement getSamsung() {
+		
+		return driver.findElement(samsung); 
+	}
+
+public WebElement getHuawei() {
+	
+	return driver.findElement(huawei); 
+}
+
+public WebElement getGoogle() {
+	
+	return driver.findElement(google); 
+}
 	
 
 
