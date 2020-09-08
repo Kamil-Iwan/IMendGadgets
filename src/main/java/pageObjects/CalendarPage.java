@@ -1,6 +1,10 @@
 package pageObjects;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,16 +23,28 @@ public class CalendarPage {
 	By allMonths = By.cssSelector(".xdsoft_monthselect");
 	By allDays = By.xpath("//td/data-date/");
 	By calendarText = By.cssSelector(".wpcf7-form-control-wrap .booking-date");
+	By calendarPrev = By.cssSelector(".xdsoft_timepicker .xdsoft_prev");
+	By calendarNext = By.cssSelector(".xdsoft_timepicker .xdsoft_next");
 
 	
-	Calendar cal = Calendar.getInstance();
-	int currentYear = cal.get(Calendar.YEAR);
+
 	
 	public int targetYear = 2020;
 	public String targetMonth1 = "October";
 	public int targetDay = 25; 
-	public String targetTime = "16:30";
-	public String targetDateString = "30/08/2020 16:30";
+	public String targetTime = "14:30";
+	
+	
+	
+	public int MonthAsIntegerConstructor() throws ParseException {
+	Date date = new SimpleDateFormat("MMM", Locale.ENGLISH).parse(targetMonth1);
+	 Calendar cal = Calendar.getInstance();
+	 cal.setTime(date);
+	 int monthAsInteger = cal.get(Calendar.MONTH)+1;
+	 return monthAsInteger;
+	}
+	
+	
 	
 	
 public CalendarPage(WebDriver driver) {
@@ -84,6 +100,16 @@ public WebElement getCalendarText() {
 	return driver.findElement(calendarText); 
 }
 
+public WebElement getCalendarPrev() {
+	
+	return driver.findElement(calendarPrev); 
+}
+
+public WebElement getCalendarNext() {
+	
+	return driver.findElement(calendarNext); 
+}
+
 	
 	
 
@@ -95,4 +121,3 @@ public WebElement getCalendarText() {
 	
 
 }
-

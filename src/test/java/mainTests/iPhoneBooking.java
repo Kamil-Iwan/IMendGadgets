@@ -39,7 +39,10 @@ public class iPhoneBooking extends base{
 			
 		
 		//close popup
-		p.getExitPopup().click();
+		//p.getExitPopup().click();
+		
+		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		executor.executeScript("arguments[0].click();", p.getExitPopup());
 		
 		
 		//Fix my device
@@ -74,7 +77,7 @@ public class iPhoneBooking extends base{
 		
 			
 			//click Book Repair Now
-			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			//JavascriptExecutor executor = (JavascriptExecutor)driver;
 			executor.executeScript("arguments[0].click();", pp.getBookRepair());
 						
 			//check if Select Delivery Option page is present

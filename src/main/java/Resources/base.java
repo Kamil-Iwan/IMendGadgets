@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class base {
 	
@@ -33,14 +35,29 @@ public class base {
 			driver.manage().deleteAllCookies();
 			
 			ChromeOptions options = new ChromeOptions();
+			
 			//options.addArguments("--headless");
 			options.addArguments("--start-fullscreen");
 			
 		 driver=new ChromeDriver(options); 
 		}	
 		
+		else if (browserName.equals("firefox")) {
+			
+			System.setProperty("webdriver.gecko.driver", "//Users//kamil//Desktop//automatedTesting//drivers//geckodriver");
+			driver = new FirefoxDriver(); 
+			
+		    FirefoxOptions options = new FirefoxOptions();
+		    
+		    driver.manage().window().maximize();
+
+		    //options.addArguments("--start-fullscreen");
+		    //options.addArguments("--start-maximized");
+			
+		}
 		
-		driver.manage().timeouts().implicitlyWait(8,  TimeUnit.SECONDS);
+		
+		driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
 		return driver; 
 		
 		
