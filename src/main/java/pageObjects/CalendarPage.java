@@ -25,26 +25,26 @@ public class CalendarPage {
 	By calendarText = By.cssSelector(".wpcf7-form-control-wrap .booking-date");
 	By calendarPrev = By.cssSelector(".xdsoft_timepicker .xdsoft_prev");
 	By calendarNext = By.cssSelector(".xdsoft_timepicker .xdsoft_next");
-
+	By checkDate = By.cssSelector(".wpcf7-form-control-wrap .booking-date");
 	
 
 	
 	public int targetYear = 2020;
-	public String targetMonth1 = "October";
-	public int targetDay = 25; 
-	public String targetTime = "14:30";
+	public String targetMonth1 = "November";
+	public int targetDay = 15; 
+	public String targetTime = "16:00";
+	
+	int monthAsInteger;
 	
 	
-	
-	public int MonthAsIntegerConstructor() throws ParseException {
+	public int MonthAsIntegerMethod() throws ParseException {
 	Date date = new SimpleDateFormat("MMM", Locale.ENGLISH).parse(targetMonth1);
 	 Calendar cal = Calendar.getInstance();
 	 cal.setTime(date);
-	 int monthAsInteger = cal.get(Calendar.MONTH)+1;
-	 return monthAsInteger;
+	 return monthAsInteger = cal.get(Calendar.MONTH)+1;
 	}
 	
-	
+
 	
 	
 public CalendarPage(WebDriver driver) {
@@ -108,6 +108,11 @@ public WebElement getCalendarPrev() {
 public WebElement getCalendarNext() {
 	
 	return driver.findElement(calendarNext); 
+}
+
+public WebElement getCheckDate() {
+	
+	return driver.findElement(checkDate); 
 }
 
 	

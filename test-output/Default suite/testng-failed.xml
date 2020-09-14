@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="mainTests.OtherPhoneBooking">
+      <class name="mainTests.sampleTest">
         <methods>
-          <include name="GoogleiheckBookingProcess"/>
+          <include name="calendarCheck"/>
         </methods>
-      </class> <!-- mainTests.OtherPhoneBooking -->
+      </class> <!-- mainTests.sampleTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

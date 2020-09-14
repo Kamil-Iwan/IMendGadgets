@@ -3,7 +3,18 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="mainTests.addItemToBasketTest"/>
+      <class name="mainTests.iPadBooking"/>
+      <class name="mainTests.calendar"/>
+      <class name="mainTests.HuaweiBooking"/>
+      <class name="mainTests.allPhonesBooking"/>
+      <class name="mainTests.OtherPhoneBooking"/>
+      <class name="mainTests.checkPictures"/>
+      <class name="mainTests.SamsungBooking"/>
+      <class name="mainTests.GoogleBooking"/>
+      <class name="mainTests.iPhoneBooking"/>
+      <class name="mainTests.methodExecutionTest"/>
+      <class name="mainTests.LaptopBooking"/>
+      <class name="mainTests.GadgetsBooking"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
