@@ -179,7 +179,10 @@ public class iPadBooking extends base {
 			ipd.getPostYourDevice().click();
 
 			// enter Device Unlocking Code
+			lt.getEnterDeviceCode().clear();
 			lt.getEnterDeviceCode().sendKeys("test unlocking code");
+			
+			
 
 			// click Proceed With Booking
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -248,6 +251,7 @@ public class iPadBooking extends base {
 			ipd.getPostYourDevice().click();
 
 			// enter Device Unlocking Code
+			lt.getEnterDeviceCode().clear();
 			lt.getEnterDeviceCode().sendKeys("test unlocking code");
 
 			// click Proceed With Booking
@@ -316,6 +320,7 @@ public class iPadBooking extends base {
 			ipd.getPostYourDevice().click();
 
 			// enter Device Unlocking Code
+			lt.getEnterDeviceCode().clear();
 			lt.getEnterDeviceCode().sendKeys("test unlocking code");
 
 			// click Proceed With Booking

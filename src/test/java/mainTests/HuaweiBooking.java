@@ -94,7 +94,7 @@ public class HuaweiBooking extends base {
 
 				else {
 
-					System.out.println(phoneName + "- Submit Booking on Page 3 is missing - ERROR!!!!!!");
+					System.out.println(phoneName + "- BOOKING STEP 3 PAGE ERROR!!!!!!");
 				}
 			}
 

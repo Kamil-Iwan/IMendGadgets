@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import Resources.base;
+import pageObjects.CalendarPage;
 import pageObjects.DeliveryPage;
 import pageObjects.LandingPage;
 import pageObjects.PhoneRepairs;
@@ -34,6 +35,7 @@ public class iPhoneBooking extends base {
 		ProductPage pp = new ProductPage(driver);
 		DeliveryPage dp = new DeliveryPage(driver);
 		ReusableMethods m = new ReusableMethods(driver);
+		CalendarPage c = new CalendarPage(driver);
 
 		// close popup
 		// p.getExitPopup().click();
@@ -82,6 +84,60 @@ public class iPhoneBooking extends base {
 				// click on Repair In Store
 				dp.getRepairInStore().click();
 
+				// SELECT A TARGET DATE FROM THE CALENDAR
+				// click on Calendar
+				c.getCalendar().click();
+
+				// click on a target year
+				c.getYear().click();
+				driver.findElement(By.xpath("//div[@data-value='" + c.targetYear + "']")).click();
+
+				// click on a target month
+				c.getMonth().click();
+				driver.findElement(By.xpath("//div[text()='" + c.targetMonth1 + "']")).click();
+
+				// click on a target day
+				try {
+					driver.findElement(By.xpath("//td[@data-date='" + c.targetDay + "']")).click();
+				}
+
+				catch (org.openqa.selenium.StaleElementReferenceException ex) {
+
+					driver.findElement(By.xpath("//td[@data-date='" + c.targetDay + "']")).click();
+				}
+
+				// click on a target hour
+				// scroll up on calendar dropdown list
+				for (int z = 1; z <= 10; z++) {
+
+					c.getCalendarPrev().click();
+
+				}
+
+				List<WebElement> allHours = driver.findElements(By.cssSelector(".xdsoft_time"));
+				int allHoursSize = allHours.size();
+
+				// iterate through the available times and click on the target time
+				for (int x = 1; x <= allHoursSize; x++) {
+
+					WebElement selectedHour = driver
+							.findElement(By.xpath("//div[@class='xdsoft_time_variant']//div[" + x + "]"));
+					String selectedHourString = selectedHour.getText();
+
+					if (selectedHourString.contains(c.targetTime)) {
+
+						selectedHour.click();
+						break;
+
+					}
+
+					else {
+
+						c.getCalendarNext().click();
+
+					}
+				}
+
 				// click on Proceed With Booking
 				executor.executeScript("arguments[0].click();", dp.getProceedWithBooking());
 
@@ -97,7 +153,7 @@ public class iPhoneBooking extends base {
 
 				else {
 
-					System.out.println(phoneName + " - Submit Booking is missing - ERROR!!!!!!");
+					System.out.println(phoneName + " - BOOKING STEP 3 PAGE ERROR!!!!!!");
 				}
 			}
 

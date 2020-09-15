@@ -115,15 +115,19 @@ public class calendar extends base {
 		int allHoursSize = allHours.size();
 
 		// iterate through the available times and click on the target time
-		for (int x = 1; x <= allHoursSize; x++) {
-
-			WebElement selectedHour = driver
-					.findElement(By.xpath("//div[@class='xdsoft_time_variant']//div[" + x + "]"));
-			String selectedHourString = selectedHour.getText();
+//		for (int x = 1; x <= allHoursSize; x++) {
+//
+//			WebElement selectedHour = driver
+//					.findElement(By.xpath("//div[@class='xdsoft_time_variant']//div[" + x + "]"));
+//			String selectedHourString = selectedHour.getText();
+		
+		for(WebElement hours: allHours) {
+			
+			String selectedHourString = hours.getText();
 
 			if (selectedHourString.contains(c.targetTime)) {
 
-				selectedHour.click();
+				hours.click();
 				break;
 
 			}

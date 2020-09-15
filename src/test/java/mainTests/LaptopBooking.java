@@ -157,8 +157,11 @@ public class LaptopBooking extends base {
 					System.out.println(laptopName + " ERROR!!!!");
 
 				}
+
 			}
 		}
+
+		driver.quit();
 
 	}
 }

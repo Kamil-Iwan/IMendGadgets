@@ -1,68 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="mainTests.GoogleBooking">
-        <methods>
-          <include name="GoogleiheckBookingProcess"/>
-        </methods>
-      </class> <!-- mainTests.GoogleBooking -->
-      <class name="mainTests.checkPictures">
-        <methods>
-          <include name="basePageNavigation"/>
-        </methods>
-      </class> <!-- mainTests.checkPictures -->
-      <class name="mainTests.iPadBooking">
-        <methods>
-          <include name="checkiPadBookingPage"/>
-        </methods>
-      </class> <!-- mainTests.iPadBooking -->
-      <class name="mainTests.iPhoneBooking">
-        <methods>
-          <include name="iPhoneCheckBookingProcess"/>
-        </methods>
-      </class> <!-- mainTests.iPhoneBooking -->
-      <class name="mainTests.LaptopBooking">
-        <methods>
-          <include name="checkLaptopBookingProcess"/>
-        </methods>
-      </class> <!-- mainTests.LaptopBooking -->
-      <class name="mainTests.methodExecutionTest">
-        <methods>
-          <include name="basePageNavigation"/>
-        </methods>
-      </class> <!-- mainTests.methodExecutionTest -->
-      <class name="mainTests.OtherPhoneBooking">
-        <methods>
-          <include name="GoogleiheckBookingProcess"/>
-        </methods>
-      </class> <!-- mainTests.OtherPhoneBooking -->
-      <class name="mainTests.SamsungBooking">
-        <methods>
-          <include name="SamsungCheckBookingProcess"/>
-        </methods>
-      </class> <!-- mainTests.SamsungBooking -->
-      <class name="mainTests.calendar">
+      <class name="mainTests.urlTesterLandingPage">
         <methods>
           <include name="calendarCheck"/>
         </methods>
-      </class> <!-- mainTests.calendar -->
-      <class name="mainTests.HuaweiBooking">
-        <methods>
-          <include name="HuaweiheckBookingProcess"/>
-        </methods>
-      </class> <!-- mainTests.HuaweiBooking -->
-      <class name="mainTests.allPhonesBooking">
-        <methods>
-          <include name="allPhonesBookingProcess"/>
-        </methods>
-      </class> <!-- mainTests.allPhonesBooking -->
-      <class name="mainTests.GadgetsBooking">
-        <methods>
-          <include name="checkGadgetsBookingProcess"/>
-        </methods>
-      </class> <!-- mainTests.GadgetsBooking -->
+      </class> <!-- mainTests.urlTesterLandingPage -->
     </classes>
-  </test> <!-- Test(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

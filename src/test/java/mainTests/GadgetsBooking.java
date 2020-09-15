@@ -90,6 +90,7 @@ public class GadgetsBooking extends base {
 			lt.getPostYourDevice().click();
 
 			// enter Device Unlocking Code
+			lt.getEnterDeviceCode().clear();
 			lt.getEnterDeviceCode().sendKeys("test unlocking code");
 
 			// click Proceed With Booking

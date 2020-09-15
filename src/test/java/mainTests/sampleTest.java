@@ -26,12 +26,16 @@ public class sampleTest extends base {
 
 		// initialise driver
 		driver = initializeDriver();
-		driver.get("https://myaccount.williamhbrown.co.uk/Login?redir=%2F");
+		driver.get("https://www.kcl.ac.uk/search/search#/courses?term=computer%20science&coursesPage=1");
 
-		// initialise Page Objects
-		sampleObjects s = new sampleObjects(driver); 
 		
-		s.getPopup().click();
+		List<WebElement> allClasses = driver.findElements(By.xpath("//*[starts-with(text(),'Delivery: ')]"));
+		int classesSize = allClasses.size();
+		System.out.println("All classes size: "+classesSize);
+		
+		
+//		List<WebElement> iButtons = driver.findElements(By.xpath("//button[@class='btn-fix']"));
+//		int iphoneButtons = iButtons.size();
 		
 		
 

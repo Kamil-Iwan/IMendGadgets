@@ -29,10 +29,10 @@ public class CalendarPage {
 	
 
 	
-	public int targetYear = 2020;
+	public int targetYear = 2021;
 	public String targetMonth1 = "November";
-	public int targetDay = 15; 
-	public String targetTime = "16:00";
+	public int targetDay = 25; 
+	public String targetTime = "13:00";
 	
 	int monthAsInteger;
 	
