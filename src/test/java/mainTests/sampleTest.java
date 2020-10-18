@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 import Resources.JSExecutor;
@@ -26,18 +27,14 @@ public class sampleTest extends base {
 
 		// initialise driver
 		driver = initializeDriver();
-		driver.get("https://www.kcl.ac.uk/search/search#/courses?term=computer%20science&coursesPage=1");
+		driver.get("https://www.williamhbrown.co.uk/");
 
 		
-		List<WebElement> allClasses = driver.findElements(By.xpath("//*[starts-with(text(),'Delivery: ')]"));
-		int classesSize = allClasses.size();
-		System.out.println("All classes size: "+classesSize);
 		
 		
-//		List<WebElement> iButtons = driver.findElements(By.xpath("//button[@class='btn-fix']"));
-//		int iphoneButtons = iButtons.size();
-		
-		
+		Actions a = new Actions(driver);	
+		a.moveToElement(driver.findElement(By.xpath("//div[@class='nav-part nav-part-2']/ul/li[2]"))).build().perform();
+
 
 		
 		

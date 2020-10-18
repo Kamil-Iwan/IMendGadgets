@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import Resources.base;
+import pageObjects.CalendarPage;
 import pageObjects.DeliveryPage;
 import pageObjects.LandingPage;
 import pageObjects.PhoneRepairs;
@@ -34,6 +35,7 @@ public class GoogleBooking extends base {
 		ProductPage pp = new ProductPage(driver);
 		DeliveryPage dp = new DeliveryPage(driver);
 		ReusableMethods m = new ReusableMethods(driver);
+		CalendarPage c = new CalendarPage(driver);
 
 		// close popup
 		p.getExitPopup().click();
@@ -78,6 +80,10 @@ public class GoogleBooking extends base {
 
 				// click on Repair In Store
 				dp.getRepairInStore().click();
+
+				
+				// SELECT A TARGET DATE FROM THE CALENDAR
+				m.getCalendarMethod();
 
 				// click on Proceed With Booking
 				executor.executeScript("arguments[0].click();", dp.getProceedWithBooking());

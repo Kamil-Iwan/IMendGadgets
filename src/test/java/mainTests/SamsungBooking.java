@@ -79,6 +79,9 @@ public class SamsungBooking extends base {
 
 				// click on Repair In Store
 				dp.getRepairInStore().click();
+				
+				//select a date from the calendar
+				m.getCalendarMethod();
 
 				// click on Proceed With Booking
 				executor.executeScript("arguments[0].click();", dp.getProceedWithBooking());

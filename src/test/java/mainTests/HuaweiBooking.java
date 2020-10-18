@@ -78,6 +78,8 @@ public class HuaweiBooking extends base {
 
 				// click on Repair In Store
 				dp.getRepairInStore().click();
+				
+				m.getCalendarMethod();
 
 				// click on Proceed With Booking
 				executor.executeScript("arguments[0].click();", dp.getProceedWithBooking());
